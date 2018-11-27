@@ -15,8 +15,18 @@ import random
 import time
 from threading import Thread
 
+answer = None
+tooSlow = False
+
+def check():
+    global too_slow
+    global answer
+    time.sleep(2)
+    if answer != None: return
+    too_slow = True
+
 #genDigit() used to create number that have 4 digit in gameplay.
-def genDigit():
+def gen_digit():
     digit = ''
     while len(digit) != 4:
         num = random.randint(0,9)
@@ -25,87 +35,87 @@ def genDigit():
     return digit
 
 # convert string to integer
-def strToInt(x):
+def str_to_int(x):
     x = int(x)
     return x
     
-def intToStr(x):
+def int_to_str(x):
     x = str(x)
     return x
 
-def plus1(digit):
-    newDigit = ''
+def plus_1(digit):
+    new_digit = ''
     for l in digit:
-        l = strToInt(l)
+        l = str_to_int(l)
         l += 1
         if l == 10:
             l = 0
-        l = intToStr(l)
-        newDigit += l
-    return newDigit
+        l = int_to_str(l)
+        new_digit += l
+    return new_digit
     
-def plus3(digit):
-    newDigit = ''
+def plus_3(digit):
+    new_digit = ''
     for l in digit:
-        l = strToInt(l)
+        l = str_to_int(l)
         l += 3
         if l >= 10:
             l %= 10
-        l = intToStr(l)
-        newDigit += l
-    return newDigit
+        l = int_to_str(l)
+        new_digit += l
+    return new_digit
     
 
 
-def gameOver():
+def game_over():
     print("Game over!!")
-    print("the correct answer is " + digitAns + ".")
+    print("the correct answer is " + digit_ans + ".")
     print("Your longest streak is " + str(streak) + '.')
 
-def timeOver():
+def time_over():
     print("Time over!!")
-    print("the correct answer is " + digitAns + ".")
+    print("the correct answer is " + digit_ans + ".")
     print("Your longest streak is " + str(streak) + '.')
     
     
     
-def add1():
+def add_1():
     flag = True
     global streak
     streak = 0 
     while flag:
-        digit = genDigit() 
+        digit = gen_digit() 
         print(digit)
-        global digitAns
-        digitAns = plus1(digit)        
+        global digit_ans
+        digit_ans = plus_1(digit)        
         ans = input()
-        if ans == digitAns:
+        if ans == digit_ans:
             print("Correct!!")
             streak += 1
             
         else:
-            gameOver()
+            game_over()
             flag = False
         
-def add3():
+def add_3():
     flag = True
     global streak
     streak = 0 
     while flag:
-        digit = genDigit() 
+        digit = gen_digit() 
         print(digit)
-        global digitAns
-        digitAns = plus3(digit)        
+        global digit_ans
+        digit_ans = plus_3(digit)        
         ans = input()
-        if ans == digitAns:
+        if ans == digit_ans:
             print("Correct!!")
             streak += 1
             
         else:
-            gameOver()
+            game_over()
             flag = False
         
-def sys2Game():
+def sys_2_game():
     while True:
         print("Welcome!!")
         print("Choose Your challenge.")
@@ -114,13 +124,11 @@ def sys2Game():
         print("Your choice is ",end='')
         game = input()
         if game == '1':
-            add1()        
-
+            add_1()
         elif game == '3':
-            add3()
+            add_3()
         else:
-            continue
-        
+            continue        
         print("Try again? Y/N")
         status = input().upper()
         if status == "Y":
