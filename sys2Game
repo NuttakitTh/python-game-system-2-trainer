@@ -15,14 +15,15 @@ import random
 import time
 from threading import Thread
 
-answer = None
-tooSlow = False
+ans = None
+too_slow = False
 
+# check() used to limit time to put input in add_1 and add_3 function for 2 second 
 def check():
     global too_slow
-    global answer
-    time.sleep(2)
-    if answer != None: return
+    global ans
+    time.sleep(10)
+    if ans != None: return
     too_slow = True
 
 #genDigit() used to create number that have 4 digit in gameplay.
@@ -74,11 +75,10 @@ def game_over():
 
 def time_over():
     print("Time over!!")
-    print("the correct answer is " + digit_ans + ".")
     print("Your longest streak is " + str(streak) + '.')
     
     
-    
+# still have to fix time limit.      
 def add_1():
     flag = True
     global streak
@@ -87,16 +87,21 @@ def add_1():
         digit = gen_digit() 
         print(digit)
         global digit_ans
-        digit_ans = plus_1(digit)        
-        ans = input()
-        if ans == digit_ans:
-            print("Correct!!")
-            streak += 1
-            
-        else:
-            game_over()
+        digit_ans = plus_1(digit)
+        Thread(target = check).start()
+        ans = input("Input your here: ")
+        if too_slow:
+            time_over()
             flag = False
+        else:
+            if ans == digit_ans:
+                print("Correct!!")
+                streak += 1            
+            else:
+                game_over()
+                flag = False
         
+# still have to fix time limit.    
 def add_3():
     flag = True
     global streak
@@ -105,22 +110,26 @@ def add_3():
         digit = gen_digit() 
         print(digit)
         global digit_ans
-        digit_ans = plus_3(digit)        
-        ans = input()
-        if ans == digit_ans:
-            print("Correct!!")
-            streak += 1
-            
-        else:
-            game_over()
+        digit_ans = plus_3(digit)
+        Thread(target = check).start()
+        ans = input("Input your here: ")
+        if too_slow:
+            time_over()
             flag = False
+        else:
+            if ans == digit_ans:
+                print("Correct!!")
+                streak += 1            
+            else:
+                game_over()
+                flag = False
         
 def sys_2_game():
     while True:
         print("Welcome!!")
         print("Choose Your challenge.")
-        print("Press 1 to choose Add1")
-        print("Padd3()ress 3 to choose Add3")
+        print("Press 1 to choose add_1")
+        print("Press 3 to choose add_3")
         print("Your choice is ",end='')
         game = input()
         if game == '1':
@@ -140,3 +149,4 @@ def sys_2_game():
         else:
             continue
 
+sys_2_game()
