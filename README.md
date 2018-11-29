@@ -19,6 +19,7 @@ For this game, I will give you an opportunity to experience your System 2 work a
 Here is how it works.
 
 How to play
+Note: Run this game in console only!!
 Note: I recommend you to play this game with a steady rhythm (you can use metronome at 1/sec to help you.).
 
 Step 1 
