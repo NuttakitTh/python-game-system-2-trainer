@@ -1,4 +1,4 @@
-# python-game
+# python-game-System 2 trainer
 Game name: System 2 trainer
 
 Note: This game was inspired by the book Thinking Fast and Slow by Daniel Kahneman.
