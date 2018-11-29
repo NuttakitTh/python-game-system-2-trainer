@@ -27,6 +27,8 @@ Program will give you the number for 4 digit when number has emerg in screen rea
 Step 2 
 Wait for two beat, then press a integer in which each of the 4 original digits is incremented by 1 together with voiced the digit that you have press. Press with rhythm keeping the rhythm is important.
 
+This section called ADD-1 if you want more challenge please try ADD-3.
+
 Step 3
 Wait for a result. If you have response with the correct answer. Program will tell you are correct and add you streak for 1.
 
