@@ -7,7 +7,8 @@ This game have 2 level.
 Easy: Add1  
 Hard: Add3  
 
-#About it
+About it
+
 In Thinking, Fast and Slow, Kahneman wrestles said there are two system that we used to think such as System 1 and System 2.
 
 What Are System 1 and System 2?
