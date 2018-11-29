@@ -116,6 +116,8 @@ def sys_2_game():
             print("Thank you for playing!!") #goodbye message
             break
         else:
-            continue
+            print("For next time please give we a input of 'Y' or 'N'")
+            print("Thank you for playing!!") 
+            break
 
 sys_2_game()
